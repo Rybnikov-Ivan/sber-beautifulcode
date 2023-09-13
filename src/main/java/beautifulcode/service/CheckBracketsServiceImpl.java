@@ -15,6 +15,10 @@ public class CheckBracketsServiceImpl implements CheckBracketsService {
     @Override
     public CheckBracketsResponseDto checkBrackets(CheckBracketsDto dto) {
         String text = dto.getText();
+        if (text == null || text.isEmpty()) {
+            return new CheckBracketsResponseDto(false);
+        }
+
         List<Character> bracketsList = getBracketSequence(text.toCharArray());
         boolean result = isCorrect(bracketsList);
         return new CheckBracketsResponseDto(result);

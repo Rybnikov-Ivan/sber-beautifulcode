@@ -20,8 +20,8 @@ public class CheckBracketsController {
     }
 
     @ResponseBody
-    @PostMapping(name = "/checkBrackets", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CheckBracketsResponseDto> checkBracketsInText(
+    @PostMapping(value = "/checkBrackets", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CheckBracketsResponseDto> getText(
             @RequestBody CheckBracketsDto checkBracketsDto
             ) {
         return ResponseEntity.ok(checkBracketsService.checkBrackets(checkBracketsDto));
