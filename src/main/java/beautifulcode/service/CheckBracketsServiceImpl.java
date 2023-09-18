@@ -55,21 +55,19 @@ public class CheckBracketsServiceImpl implements CheckBracketsService {
             } else {
                 if (bracketsStack.empty()) {
                     return false;
-                }
-
-                char openBracket = bracketsStack.peek();
-                switch (openBracket) {
-                    case Constants.OPENING_ROUND_PARENTHESIS -> {
-                        if (bracket == Constants.CLOSING_ROUND_PARENTHESIS)
-                            bracketsStack.pop();
-                    }
-                    case Constants.OPENING_SQUARE_PARENTHESIS -> {
-                        if (bracket == Constants.CLOSING_SQUARE_PARENTHESIS)
-                            bracketsStack.pop();
-                    }
-                    case Constants.OPENING_CURLY_PARENTHESIS -> {
-                        if (bracket == Constants.CLOSING_CURLY_PARENTHESIS)
-                            bracketsStack.pop();
+                } else {
+                    char openBracket = bracketsStack.peek();
+                    if (openBracket == Constants.OPENING_ROUND_PARENTHESIS &&
+                            bracket == Constants.CLOSING_ROUND_PARENTHESIS) {
+                        bracketsStack.pop();
+                    } else if(openBracket == Constants.OPENING_SQUARE_PARENTHESIS &&
+                            bracket == Constants.CLOSING_SQUARE_PARENTHESIS) {
+                        bracketsStack.pop();
+                    } else if (openBracket == Constants.OPENING_CURLY_PARENTHESIS &&
+                            bracket == Constants.CLOSING_CURLY_PARENTHESIS) {
+                        bracketsStack.pop();
+                    } else {
+                        return false;
                     }
                 }
             }

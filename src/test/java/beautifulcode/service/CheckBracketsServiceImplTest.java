@@ -47,7 +47,7 @@ public class CheckBracketsServiceImplTest {
         String secondText = "{]{)()";
         String thirdText = "((())";
         String fourthText = "({[]}]";
-        String fifthText = "(";
+        String fifthText = "(])";
 
         CheckBracketsResponseDto firstResult = checkBracketsService.checkBrackets(createCheckBracketsDto(firstText));
         CheckBracketsResponseDto secondResult = checkBracketsService.checkBrackets(createCheckBracketsDto(secondText));
